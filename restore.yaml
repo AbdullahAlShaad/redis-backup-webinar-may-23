@@ -1,0 +1,15 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: RestoreSession
+metadata:
+  name: redis-restore
+  namespace: demo
+spec:
+  repository:
+    name: gcs-repo
+  target:
+    ref:
+      apiVersion: appcatalog.appscode.com/v1alpha1
+      kind: AppBinding
+      name: redis-cluster
+  rules:
+  - snapshots: [latest]
